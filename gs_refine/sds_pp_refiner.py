@@ -37,7 +37,7 @@ class GSRefinerSDSPlusPlus(nn.Module):
         self.vae = pipe.vae.requires_grad_(False)
         self.unet = pipe.unet.requires_grad_(False)
 
-        self.scheduler = DDIMScheduler.from_pretrained(sd_model_key, subfolder="scheduler", local_files_only=True)
+        self.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 
         del pipe
 

@@ -13,7 +13,7 @@ from tqdm import tqdm
 
 def load_refiner(device):
     refiner = GSRefinerSDSPlusPlus(
-        sd_model_key='stabilityai/stable-diffusion-2-1-base',
+        sd_model_key='Manojb/stable-diffusion-2-1-base',
         num_views=1,
         img_size=512,
         guidance_scale=7.5,
@@ -35,7 +35,7 @@ def load_refiner(device):
     return refiner
 
 def refine_3DGS(refiner, path, text):
-    device = 'cuda'
+    device = next(refiner.parameters()).device
 
     init_3DGS = load_ply_for_gaussians(path / "scene.ply", device=device)
     Ks = torch.load(path / 'Ks.pt', weights_only=False).to(device)

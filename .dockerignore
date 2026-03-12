@@ -1,0 +1,11 @@
+# Docker build context에서 제외할 파일들
+.venv/
+steerx_ckpt/
+*.pyc
+__pycache__/
+.git/
+samples/
+*.mp4
+*.ply
+*.avi
+.DS_Store
